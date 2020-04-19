@@ -1,0 +1,12 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  maxThreads: 128
+  requestLog:
+    timeZone: UTC
+    appenders:
+      - type: console
+  connector:
+    type: http
+    port: 8080
