@@ -11,7 +11,7 @@ How to start the QuantumState application
 
 ### Sequences:
 
-#### Create an unbounded sequence with inclrement of 1 and random start number:
+#### Create a sequence with increment of 1 and a random start number:
 
 Request: `curl --request POST http://localhost:8080`
 Response: `{"id":"55174398258626600"}`
