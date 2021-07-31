@@ -92,7 +92,7 @@ curl --request POST http://localhost:8080 \
 }'
 ```
 
-Response: `500 Internal Server Error`
+Response: `409 Conflict`
 
 #### Create a stable data with limited number of requests and limited TTL
 Request:
