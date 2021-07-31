@@ -96,6 +96,7 @@ Response: `409 Conflict`
 
 #### Create a stable data with limited number of requests and limited TTL
 Request:
+```
 curl --request POST http://localhost:8080 \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -103,8 +104,9 @@ curl --request POST http://localhost:8080 \
     "maxRequests": 2,
     "ttlSeconds": 15
 }'
+```
 
-Response: {"id": "63176963792998500"}
+Response: `{"id": "63176963792998500"}`
 
 Request to access the data: `curl --request GET http://localhost:8080/?id=63176963792998500`
 
