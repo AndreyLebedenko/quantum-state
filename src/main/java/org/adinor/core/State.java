@@ -8,19 +8,17 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class QuantumState {
+public class State {
   private final AtomicLong innerState;
   private final AtomicLong counter;
   private final int step;
   private final Instant whenCreated;
   private final Optional<Integer> ttl;
 
-  public QuantumState(PostRequest postRequest, Instant whenCreated) {
+  public State(PostRequest postRequest, Instant whenCreated) {
     this.ttl = postRequest.getTtlSeconds();
-    this.innerState =
-        new AtomicLong(
-            postRequest.getInitialValue().orElseGet(() -> ThreadLocalRandom.current().nextLong()));
-    this.step = postRequest.getStep().orElse(0);
+    this.innerState = new AtomicLong(postRequest.getInitialValue());
+    this.step = postRequest.getStep();
     this.counter = new AtomicLong(postRequest.getMaxRequests());
     this.whenCreated = whenCreated;
   }
@@ -32,7 +30,7 @@ public class QuantumState {
       return Optional.empty();
     } else if (counter.get() > 0) {
       counter.decrementAndGet();
-    } // else - no limit
+    } // negative - no limit
     return Optional.of(innerState.addAndGet(step));
   }
 }

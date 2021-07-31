@@ -1,7 +1,7 @@
 package org.adinor.resources;
 
 import org.adinor.api.GetResponse;
-import org.adinor.db.QuantumStorage;
+import org.adinor.db.Storage;
 import org.glassfish.jersey.server.ManagedAsync;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,18 +23,17 @@ import java.util.function.Supplier;
 public class QuantumGet {
   private static final Logger logger = LoggerFactory.getLogger(QuantumGet.class);
 
-  private final QuantumStorage storage;
+  private final Storage storage;
 
-  public QuantumGet(final QuantumStorage storage) {
+  public QuantumGet(final Storage storage) {
     this.storage = storage;
   }
 
   @GET
   @ManagedAsync
-  public void get(
-      @Suspended final AsyncResponse asyncResponse, @QueryParam("id") @NotEmpty final String id) {
+  public void get(@Suspended AsyncResponse asyncResponse, @QueryParam("id") @NotEmpty String id) {
     final Optional<Supplier<Optional<Long>>> supplier = storage.getValue(id);
-    Optional<GetResponse> response =
+    final Optional<GetResponse> response =
         supplier.map(Supplier::get).flatMap(d -> d.map(x -> GetResponse.builder().data(x).build()));
     response
         .map(res -> asyncResponse.resume(Response.ok().entity(res).build()))
