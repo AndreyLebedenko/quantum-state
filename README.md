@@ -58,7 +58,7 @@ Request: `curl --request GET http://localhost:8080/?id=49175190346540100`
 6th+ response: `404 Not Found`
 
 
-#### Create a sequence with a custom ID of "blahblah"
+#### Create a sequence with a custom ID of "blahblah" (say to use as a source for serials in the cluster)
 
 Request: 
 ```
@@ -73,10 +73,14 @@ curl --location --request POST http://localhost:8080 \
 
 Response: `{"id":"blahblah"}`
 
+Accessing:
+
 Request: `curl --request GET http://localhost:8080/?id=blahblah`
 
 1st response: `{"data":4567890124}`
+
 2nd response: `{"data":4567890125}`
+
 3rd response: `{"data":4567890126}`
 etc
 
