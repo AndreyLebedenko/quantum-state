@@ -58,7 +58,7 @@ Request: `curl --request GET http://localhost:8080/?id=49175190346540100`
 6th+ response: `404 Not Found`
 
 
-#### Create a sequence with a custom ID of "blahblah" (say to use as a source for serials in the cluster)
+#### Create a sequence with a custom ID of "blahblah" (say to use as a source of serials in the cluster)
 
 Request: 
 ```
