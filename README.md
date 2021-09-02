@@ -1,4 +1,4 @@
-# QuantumState
+# Atomic serial sequnce provider and generator.
 
 How to start the QuantumState application
 ---
