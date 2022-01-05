@@ -36,7 +36,7 @@ public class QuantumGetTest {
 
   @Test
   public void canGet() {
-    GetResponse expectedValue = GetResponse.builder().data(1L).build();
+    GetResponse expectedValue = GetResponse.builder().data("1").build();
     when(storage.getValue(ID)).thenReturn(Optional.of(() -> Optional.of(expectedValue.getData())));
     when(asyncResponse.resume(any(Response.class)))
         .then(

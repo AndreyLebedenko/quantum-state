@@ -32,7 +32,7 @@ public class QuantumGet {
   @GET
   @ManagedAsync
   public void get(@Suspended AsyncResponse asyncResponse, @QueryParam("id") @NotEmpty String id) {
-    final Optional<Supplier<Optional<Long>>> supplier = storage.getValue(id);
+    final Optional<Supplier<Optional<String>>> supplier = storage.getValue(id);
     final Optional<GetResponse> response =
         supplier.map(Supplier::get).flatMap(d -> d.map(x -> GetResponse.builder().data(x).build()));
     response
