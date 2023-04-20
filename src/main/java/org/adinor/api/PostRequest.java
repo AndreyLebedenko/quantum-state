@@ -15,8 +15,8 @@ public abstract class PostRequest {
     public abstract Optional<String> getId();
 
     @Default
-    public long getInitialValue() {
-       return ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE);
+    public String getInitialValue() {
+       return String.valueOf(ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE));
     }
 
     @Min(0)

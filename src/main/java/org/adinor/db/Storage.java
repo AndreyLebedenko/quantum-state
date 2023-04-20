@@ -9,5 +9,5 @@ public interface Storage {
 
     boolean addRule(String id, PostRequest postRequest);
 
-    Optional<Supplier<Optional<Long>>> getValue(String id);
+    Optional<Supplier<Optional<String>>> getValue(String id);
 }

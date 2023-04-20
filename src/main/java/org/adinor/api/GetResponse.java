@@ -6,7 +6,9 @@ import org.immutables.value.Value;
 @Value.Immutable
 @JsonSerialize(as = ImmutableGetResponse.class)
 public abstract class GetResponse {
-    public abstract long getData();
+  public abstract String getData();
 
-    public static ImmutableGetResponse.Builder builder() { return ImmutableGetResponse.builder(); }
+  public static ImmutableGetResponse.Builder builder() {
+    return ImmutableGetResponse.builder();
+  }
 }
